@@ -3,17 +3,13 @@ import {Link} from 'react-router';
 
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
+    return(
+      <div>
           <h1>Star Wars</h1>
-          <Link to="/planet">Planets</Link>
-        </div>
+          <Link to="/planets">Planets</Link>
       </div>
     );
   }
 }
-
-export default App;
