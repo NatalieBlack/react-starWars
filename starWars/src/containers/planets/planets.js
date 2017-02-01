@@ -20,7 +20,7 @@ export default class Planets extends Component {
   getPlanets(overWriteURL){
     $.get(overWriteURL ? overWriteURL : this.PLANET_LIST_URL)
     .then(res => this.setState({
-      planetList: this.state.planetList.concat(res.result),
+      planetList: this.state.planetList.concat(res.results),
       nextUrl: res.next
     }));
   }
