@@ -30,7 +30,16 @@ export default class Planets extends Component {
       <div>
         <h2>Hi it's me planet list</h2>
 
-        <div>{this.state.planetList.map(planet => <div key={planet.name}>{planet.name}</div>)}</div>
+
+        {this.state.planetList.map(planet =>
+          <Planet
+            key={planet.name}
+            name={planet.name}
+            climate={planet.climate}
+            terrain={planet.terrain}
+            population={planet.population}
+          />
+        )}
 {this.state.nextUrl ? <button onClick={() => this.getPlanets(this.state.nextUrl)}>load more planets</button> : <h5>No more planets to show</h5>}
 
       </div>)
