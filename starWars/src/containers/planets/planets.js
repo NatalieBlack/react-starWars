@@ -14,7 +14,7 @@ export default class Planets extends Component {
 
 
   componentDidMount(){
-  this.getPlanets();
+    this.getPlanets();
   }
 
   getPlanets(overWriteURL){
@@ -26,11 +26,13 @@ export default class Planets extends Component {
   }
 
   render(){
-    return (<div>
-      <h2>Planet List</h2>
-          {this.state.planetList.map(planet => <div key={planet.name}>{planet.name}</div>)}
-    </div>
-    );
+    return (
+      <div>
+        <h2>Hi it's me planet list</h2>
+
+        <div>{this.state.planetList.map(planet => <div key={planet.name}>{planet.name}</div>)}</div>
+      </div>)
+
   }
 
 }
