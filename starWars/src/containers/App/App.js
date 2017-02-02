@@ -9,6 +9,7 @@ export default class App extends Component {
       <div>
           <h1>Star Wars</h1>
           <Link to="/planets">Planets</Link>
+          <Link to="/starships">Starships</Link>
       </div>
     );
   }
