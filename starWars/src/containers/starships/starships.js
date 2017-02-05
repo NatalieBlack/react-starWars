@@ -4,7 +4,7 @@ import Starship from '../../components/starship/starship';
 export default class Starships extends Component{
 
   STARSHIPS_LIST_URL = "http://swapi.co/api/starships";
-  STARSHIPS_SEARCH_URL = "https://swapi.co/api/starships/?search=r2";
+  
 
   state = {
     nextUrl: null,

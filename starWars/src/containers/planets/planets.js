@@ -9,6 +9,7 @@ export default class Planets extends Component {
   state = {
       nextUrl: null,
       planetList: [],
+      searchResult:[],
     };
 
 
@@ -21,17 +22,27 @@ export default class Planets extends Component {
     $.get(overWriteURL ? overWriteURL : this.PLANET_LIST_URL)
     .then(res => this.setState({
       planetList: this.state.planetList.concat(res.results),
-      nextUrl: res.next
+      nextUrl: res.next,
+      searchResult: this.state.planetList.concat(res.results),
     }));
+  }
+
+  searchClimate(){
+    let climateInput = $(".climateSearchBox").val();
+    let climateSearchMatch = this.state.planetList.filter(cliMatch => cliMatch.climate === climateInput);
+    this.setState({searchResult: climateSearchMatch});
+
   }
 
   render(){
     return (
       <div>
         <h2 style={{textAlign: 'center',padding:'20px'}}>Hi it's me planet list</h2>
+        <form>
+          <input className="climateSearchBox"></input> <button onClick={this.searchClimate.bind(this)}>search Climate</button>
+        </form>
 
-
-        {this.state.planetList.map(planet =>
+        {this.state.searchResult.map(planet =>
           <Planet
             key={planet.name}
             name={planet.name}
