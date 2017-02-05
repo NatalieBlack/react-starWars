@@ -28,7 +28,7 @@ export default class Planets extends Component {
   render(){
     return (
       <div>
-        <h2 style={{textAlign: 'center'}}>Hi it's me planet list</h2>
+        <h2 style={{textAlign: 'center',padding:'20px'}}>Hi it's me planet list</h2>
 
 
         {this.state.planetList.map(planet =>

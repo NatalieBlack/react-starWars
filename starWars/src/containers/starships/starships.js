@@ -4,10 +4,12 @@ import Starship from '../../components/starship/starship';
 export default class Starships extends Component{
 
   STARSHIPS_LIST_URL = "http://swapi.co/api/starships";
+  STARSHIPS_SEARCH_URL = "https://swapi.co/api/starships/?search=r2";
 
   state = {
     nextUrl: null,
     starshipList: [],
+    searchResult: [],
   }
 
   componentDidMount(){
@@ -19,16 +21,29 @@ export default class Starships extends Component{
     .then(res => this.setState({
       starshipList: this.state.starshipList.concat(res.results),
       nextUrl: res.next,
+      searchResult: this.state.starshipList.concat(res.results),
 
-    }));
-  }
+    }))};
+
+  searchStarship(){
+    let searchStarshipName =$(".starshipSearchBox").val()
+    let starshipSearchMatch = this.state.starshipList.filter(nameMatch => nameMatch.name === searchStarshipName);
+    this.setState({
+      searchResult: starshipSearchMatch
+    })
+
+  };
+
 
   render() {
     return(
       <div>
-        <h2>Hi there we are starships</h2>
+        <h2 style={{textAlign:'center', padding:'20px'}}>Hi there we are starships</h2>
 
-      {this.state.starshipList.map(starship =>
+        <form>
+          <input className="starshipSearchBox"></input> <button onClick={this.searchStarship.bind(this)}>search starships</button>
+        </form>
+      {this.state.searchResult.map(starship =>
         <Starship
           key={starship.name}
           name={starship.name}
