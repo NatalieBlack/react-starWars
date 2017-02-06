@@ -29,8 +29,10 @@ export default class Planets extends Component {
 
   searchClimate(){
     let climateInput = $(".climateSearchBox").val();
-    let climateSearchMatch = this.state.planetList.filter(cliMatch => cliMatch.climate === climateInput);
-    this.setState({searchResult: climateSearchMatch});
+      let cliArr = this.state.planetList.filter(c=> c.climate.split(", ").includes(climateInput));
+      console.log(cliArr);
+
+    this.setState({searchResult: cliArr});
 
   }
 
