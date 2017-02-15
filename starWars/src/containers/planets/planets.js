@@ -30,7 +30,6 @@ export default class Planets extends Component {
   searchClimate(){
     let climateInput = $(".climateSearchBox").val();
       let cliArr = this.state.planetList.filter(c=> c.climate.split(", ").includes(climateInput));
-      console.log(cliArr);
 
     this.setState({searchResult: cliArr});
 
@@ -41,7 +40,7 @@ export default class Planets extends Component {
       <div>
         <h2 style={{textAlign: 'center',padding:'20px'}}>Hi it's me planet list</h2>
         <form>
-          <input className="climateSearchBox"></input> <button onClick={this.searchClimate.bind(this)}>search Climate</button>
+          <input className="climateSearchBox"></input> <button id="climateSearchButton"onClick={this.searchClimate.bind(this)}>search Climate</button>
         </form>
 
         {this.state.searchResult.map(planet =>
@@ -53,7 +52,7 @@ export default class Planets extends Component {
             population={planet.population}
           />
         )}
-{this.state.nextUrl ? <button onClick={() => this.getPlanets(this.state.nextUrl)}>load more planets</button> : <h5>No more planets to show</h5>}
+{this.state.nextUrl ? <button id="loadMoreButton" onClick={() => this.getPlanets(this.state.nextUrl)}>load more planets</button> : <h5>No more planets to show</h5>}
 
       </div>)
 
